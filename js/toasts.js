@@ -303,8 +303,16 @@
    */
   Toast._draggedToast = null;
 
+<<<<<<< HEAD
   M.Toast = Toast;
   M.toast = function(options) {
     return new Toast(options);
   };
 })(cash, M.anime);
+=======
+  Materialize.Toast = Toast;
+  Materialize.toast = function(message, displayLength, className, completeCallback) {
+    return new Toast(message, displayLength, className, completeCallback);
+  };
+})(jQuery, Materialize.Vel);
+>>>>>>> hotfix/accessibility

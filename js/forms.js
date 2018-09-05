@@ -226,6 +226,7 @@
       true
     );
 
+<<<<<<< HEAD
     // Radio and Checkbox focus class
     let radio_checkbox = 'input[type=radio], input[type=checkbox]';
     $(document).on('keyup', radio_checkbox, function(e) {
@@ -235,6 +236,15 @@
         let $this = $(this);
         $this.one('blur', function(e) {
           $(this).removeClass('tabbed');
+=======
+      // Add initial multiple selections.
+      if (multiple) {
+        $select.find("option:selected:not(:disabled)").each(function () {
+          var index = this.index;
+
+          toggleEntryFromArray(valuesSelected, index, $select);
+          options.find("li:not(.optgroup)").eq(index).find(":checkbox").prop("checked", true);
+>>>>>>> hotfix/accessibility
         });
         return;
       }

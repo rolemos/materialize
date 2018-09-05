@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * Materialize v1.0.0-rc.2 (http://materializecss.com)
+=======
+ * Materialize v0.100.2 (http://materializecss.com)
+>>>>>>> hotfix/accessibility
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -13,6 +17,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+<<<<<<< HEAD
 /*! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
 (function (factory) {
   window.cash = factory();
@@ -42,6 +47,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     context = context || doc;
     var elems = classMatch.test(selector) ? context.getElementsByClassName(selector.slice(1)) : singlet.test(selector) ? context.getElementsByTagName(selector) : context.querySelectorAll(selector);
     return elems;
+=======
+// Check for jQuery.
+if (typeof jQuery === 'undefined') {
+  // Check if require is a defined function.
+  if (typeof require === 'function') {
+    jQuery = $ = require('jquery');
+    // Else use the dollar sign alias.
+  } else {
+    jQuery = $;
+>>>>>>> hotfix/accessibility
   }
 
   var frag;
@@ -110,7 +125,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
+<<<<<<< HEAD
     return this;
+=======
+if (typeof exports !== 'undefined' && !exports.nodeType) {
+  if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
+    exports = module.exports = Materialize;
+  }
+  exports.default = Materialize;
+}
+
+/*
+ * raf.js
+ * https://github.com/ngryman/raf.js
+ *
+ * original requestAnimationFrame polyfill by Erik Möller
+ * inspired from paul_irish gist and post
+ *
+ * Copyright (c) 2013 ngryman
+ * Licensed under the MIT license.
+ */
+(function (window) {
+  var lastTime = 0,
+      vendors = ['webkit', 'moz'],
+      requestAnimationFrame = window.requestAnimationFrame,
+      cancelAnimationFrame = window.cancelAnimationFrame,
+      i = vendors.length;
+
+  // try to un-prefix existing raf
+  while (--i >= 0 && !requestAnimationFrame) {
+    requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
+    cancelAnimationFrame = window[vendors[i] + 'CancelRequestAnimationFrame'];
+>>>>>>> hotfix/accessibility
   }
 
   function cash(selector, context) {
@@ -145,6 +191,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       i = 0;
     }
 
+<<<<<<< HEAD
     for (; i < length; i++) {
       if (!args[i]) {
         continue;
@@ -155,6 +202,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
     }
+=======
+// Velocity has conflicts when loaded with jQuery, this will check for it
+// First, check if in noConflict mode
+var Vel;
+if (jQuery) {
+  Vel = jQuery.Velocity;
+} else if ($) {
+  Vel = $.Velocity;
+} else {
+  Vel = Velocity;
+}
+
+if (Vel) {
+  Materialize.Vel = Vel;
+} else {
+  Materialize.Vel = Velocity;
+}
+;(function ($) {
+  $.fn.collapsible = function (options, methodParam) {
+    var defaults = {
+      accordion: undefined,
+      onOpen: undefined,
+      onClose: undefined
+    };
+>>>>>>> hotfix/accessibility
 
     return target;
   };
@@ -3282,6 +3354,7 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   Modal._modalsOpen = 0;
 
+<<<<<<< HEAD
   /**
    * @static
    * @memberof Modal
@@ -3295,6 +3368,13 @@ $jscomp.polyfill = function (e, r, p, m) {
   }
 })(cash, M.anime);
 ;(function ($, anim) {
+=======
+  $(document).ready(function () {
+    $('.dropdown-button').dropdown();
+  });
+})(jQuery);
+;(function ($, Vel) {
+>>>>>>> hotfix/accessibility
   'use strict';
 
   var _defaults = {
@@ -3414,10 +3494,20 @@ $jscomp.polyfill = function (e, r, p, m) {
        */
 
     }, {
+<<<<<<< HEAD
       key: "_handleWindowScroll",
       value: function _handleWindowScroll() {
         if (this.overlayActive) {
           this.close();
+=======
+      key: 'setupEventHandlers',
+      value: function setupEventHandlers() {
+        this.handleOverlayClickBound = this.handleOverlayClick.bind(this);
+        this.handleModalCloseClickBound = this.handleModalCloseClick.bind(this);
+
+        if (Modal._count === 1) {
+          document.body.addEventListener('click', this.handleTriggerClick);
+>>>>>>> hotfix/accessibility
         }
       }
 
@@ -3426,10 +3516,17 @@ $jscomp.polyfill = function (e, r, p, m) {
        */
 
     }, {
+<<<<<<< HEAD
       key: "_handleWindowResize",
       value: function _handleWindowResize() {
         if (this.overlayActive) {
           this.close();
+=======
+      key: 'removeEventHandlers',
+      value: function removeEventHandlers() {
+        if (Modal._count === 0) {
+          document.body.removeEventListener('click', this.handleTriggerClick);
+>>>>>>> hotfix/accessibility
         }
       }
 
@@ -3791,7 +3888,25 @@ $jscomp.polyfill = function (e, r, p, m) {
     return Materialbox;
   }(Component);
 
+<<<<<<< HEAD
   M.Materialbox = Materialbox;
+=======
+        // Define modal animation options
+        var exitVelocityOptions = {
+          duration: this.options.outDuration,
+          queue: false,
+          ease: 'easeOutCubic',
+          // Handle modal ready callback
+          complete: function () {
+            _this2.$el[0].style.display = 'none';
+            // Call complete callback
+            if (typeof _this2.options.complete === 'function') {
+              _this2.options.complete.call(_this2, _this2.$el);
+            }
+            _this2.$overlay[0].parentNode.removeChild(_this2.$overlay[0]);
+          }
+        };
+>>>>>>> hotfix/accessibility
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Materialbox, 'materialbox', 'M_Materialbox');
@@ -3856,9 +3971,15 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._handleImageLoadBound = this._handleImageLoad.bind(this);
         this.$img[0].addEventListener('load', this._handleImageLoadBound);
 
+<<<<<<< HEAD
         if (Parallax._parallaxes.length === 0) {
           Parallax._handleScrollThrottled = M.throttle(Parallax._handleScroll, 5);
           window.addEventListener('scroll', Parallax._handleScrollThrottled);
+=======
+        this.isOpen = false;
+        this.$el[0].classList.remove('open');
+        document.body.style.overflow = '';
+>>>>>>> hotfix/accessibility
 
           Parallax._handleWindowResizeThrottled = M.throttle(Parallax._handleWindowResize, 5);
           window.addEventListener('resize', Parallax._handleWindowResizeThrottled);
@@ -3975,8 +4096,12 @@ $jscomp.polyfill = function (e, r, p, m) {
    *
    */
 
+<<<<<<< HEAD
   var Tabs = function (_Component6) {
     _inherits(Tabs, _Component6);
+=======
+  Materialize.Modal = Modal;
+>>>>>>> hotfix/accessibility
 
     /**
      * Construct Tabs instance
@@ -4020,6 +4145,12 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this22._setupEventHandlers();
       return _this22;
     }
+<<<<<<< HEAD
+=======
+  };
+})(jQuery, Materialize.Vel);
+;(function ($) {
+>>>>>>> hotfix/accessibility
 
     _createClass(Tabs, [{
       key: "destroy",
@@ -4351,11 +4482,52 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @param {Number} prevIndex
        */
 
+<<<<<<< HEAD
     }, {
       key: "_animateIndicator",
       value: function _animateIndicator(prevIndex) {
         var leftDelay = 0,
             rightDelay = 0;
+=======
+  var methods = {
+    init: function (options) {
+      var defaults = {
+        onShow: null,
+        swipeable: false,
+        responsiveThreshold: Infinity // breakpoint for swipeable
+      };
+      options = $.extend(defaults, options);
+      var namespace = Materialize.objectSelectorString($(this));
+
+      return this.each(function (i) {
+
+        var uniqueNamespace = namespace + i;
+
+        // For each set of tabs, we want to keep track of
+        // which tab is active and its associated content
+        var $this = $(this),
+            window_width = $(window).width();
+
+        var $active,
+            $content,
+            $links = $this.find('li.tab a'),
+            $tabs_width = $this.width(),
+            $tabs_content = $(),
+            $tabs_wrapper,
+            $tab_width = Math.max($tabs_width, $this[0].scrollWidth) / $links.length,
+            $indicator,
+            index = 0,
+            prev_index = 0,
+            clicked = false,
+            clickedTimeout,
+            transition = 300;
+
+        // Finds right attribute for indicator based on active tab.
+        // el: jQuery Object
+        var calcRightPos = function (el) {
+          return Math.ceil($tabs_width - el.position().left - el[0].getBoundingClientRect().width - $this.scrollLeft());
+        };
+>>>>>>> hotfix/accessibility
 
         if (this.index - prevIndex >= 0) {
           leftDelay = 90;
@@ -5100,7 +5272,11 @@ $jscomp.polyfill = function (e, r, p, m) {
     Waves.displayEffect();
   }, false);
 })(window);
+<<<<<<< HEAD
 ;(function ($, anim) {
+=======
+;(function ($, Vel) {
+>>>>>>> hotfix/accessibility
   'use strict';
 
   var _defaults = {
@@ -5607,9 +5783,25 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.el.removeEventListener('touchend', this._handleCloseReleaseBound);
         this.el.removeEventListener('click', this._handleCloseTriggerClickBound);
 
+<<<<<<< HEAD
         // Remove resize for side nav fixed
         if (this.isFixed) {
           window.removeEventListener('resize', this._handleWindowResizeBound);
+=======
+    }, {
+      key: '_onDragStart',
+      value: function _onDragStart(e) {
+        if (e.target && $(e.target).closest('.toast').length) {
+          var $toast = $(e.target).closest('.toast');
+          var toast = $toast[0].M_Toast;
+          toast.panning = true;
+          Toast._draggedToast = toast;
+          toast.el.classList.add('panning');
+          toast.el.style.transition = '';
+          toast.startingXPos = Toast._xPos(e);
+          toast.time = Date.now();
+          toast.xPos = Toast._xPos(e);
+>>>>>>> hotfix/accessibility
         }
       }
 
@@ -5640,6 +5832,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        */
 
     }, {
+<<<<<<< HEAD
       key: "_startDrag",
       value: function _startDrag(e) {
         var clientX = e.targetTouches[0].clientX;
@@ -5653,6 +5846,32 @@ $jscomp.polyfill = function (e, r, p, m) {
         this._verticallyScrolling = false;
         anim.remove(this.el);
         anim.remove(this._overlay);
+=======
+      key: '_onDragEnd',
+      value: function _onDragEnd(e) {
+        if (!!Toast._draggedToast) {
+          var toast = Toast._draggedToast;
+          toast.panning = false;
+          toast.el.classList.remove('panning');
+
+          var totalDeltaX = toast.xPos - toast.startingXPos;
+          var activationDistance = toast.el.offsetWidth * toast.options.activationPercent;
+          var shouldBeDismissed = Math.abs(totalDeltaX) > activationDistance || toast.velocityX > 1;
+
+          // Remove toast
+          if (shouldBeDismissed) {
+            toast.wasSwiped = true;
+            toast.remove();
+
+            // Animate toast back to original position
+          } else {
+            toast.el.style.transition = 'transform .2s, opacity .2s';
+            toast.el.style.transform = '';
+            toast.el.style.opacity = '';
+          }
+          Toast._draggedToast = null;
+        }
+>>>>>>> hotfix/accessibility
       }
 
       /**
@@ -5707,6 +5926,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           totalDeltaX = 0;
         }
 
+<<<<<<< HEAD
         /**
          * transformX is the drag displacement
          * transformPrefix is the initial transform placement
@@ -5718,6 +5938,14 @@ $jscomp.polyfill = function (e, r, p, m) {
           transformPrefix = 'translateX(100%)';
           transformX = -transformX;
         }
+=======
+  Materialize.Toast = Toast;
+  Materialize.toast = function (message, displayLength, className, completeCallback) {
+    return new Toast(message, displayLength, className, completeCallback);
+  };
+})(jQuery, Materialize.Vel);
+;(function ($) {
+>>>>>>> hotfix/accessibility
 
         // Calculate open/close percentage of sidenav, with open = 1 and close = 0
         this.percentOpen = Math.min(1, totalDeltaX / this._width);
@@ -6803,6 +7031,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           matchingData.sort(sortFunctionBound);
         }
 
+<<<<<<< HEAD
         // Render
         for (var i = 0; i < matchingData.length; i++) {
           var _entry = matchingData[i];
@@ -6816,6 +7045,16 @@ $jscomp.polyfill = function (e, r, p, m) {
           $(this.container).append($autocompleteOption);
           this._highlight(val, $autocompleteOption);
         }
+=======
+      // Add initial multiple selections.
+      if (multiple) {
+        $select.find("option:selected:not(:disabled)").each(function () {
+          var index = this.index;
+
+          toggleEntryFromArray(valuesSelected, index, $select);
+          options.find("li:not(.optgroup)").eq(index).find(":checkbox").prop("checked", true);
+        });
+>>>>>>> hotfix/accessibility
       }
 
       /**
@@ -8838,7 +9077,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this53._insertHTMLIntoDOM();
       _this53._setupModal();
 
+<<<<<<< HEAD
       _this53._setupEventHandlers();
+=======
+        // * For IE, non-focusable elements can be active elements as well
+        //   (http://stackoverflow.com/a/2684561).
+        activeElement = getActiveElement();
+        activeElement = activeElement && (activeElement.type || activeElement.href) && activeElement;
+>>>>>>> hotfix/accessibility
 
       if (!_this53.options.defaultDate) {
         _this53.options.defaultDate = new Date(Date.parse(_this53.el.value));
@@ -11136,10 +11382,17 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
       }
 
+<<<<<<< HEAD
       /**
        * Cycle to next item
        * @param {Number} [n]
        */
+=======
+      // Materialize modified
+      if (override === 'raw' && selectedObject != null) {
+        return _.node('div', selectedObject.year);
+      }
+>>>>>>> hotfix/accessibility
 
     }, {
       key: "next",
@@ -11369,6 +11622,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @param {Event} e
        */
 
+<<<<<<< HEAD
     }, {
       key: "_handleDocumentClick",
       value: function _handleDocumentClick(e) {
@@ -11378,6 +11632,22 @@ $jscomp.polyfill = function (e, r, p, m) {
           e.stopPropagation();
         }
       }
+=======
+(function ($) {
+  var $win = $(window),
+      $doc = $(document);
+
+  // Can I use inline svg ?
+  var svgNS = 'http://www.w3.org/2000/svg',
+      svgSupported = 'SVGAngle' in window && function () {
+    var supported,
+        el = document.createElement('div');
+    el.innerHTML = '<svg/>';
+    supported = (el.firstChild && el.firstChild.namespaceURI) == svgNS;
+    el.innerHTML = '';
+    return supported;
+  }();
+>>>>>>> hotfix/accessibility
 
       /**
        * Setup Tap Target
@@ -11422,8 +11692,76 @@ $jscomp.polyfill = function (e, r, p, m) {
             this.waveEl.append(this.originEl);
           }
 
+<<<<<<< HEAD
           this.wrapper.append(this.waveEl);
         }
+=======
+  // Clock size
+  var dialRadius = 135,
+      outerRadius = 105,
+
+  // innerRadius = 80 on 12 hour clock
+  innerRadius = 70,
+      tickRadius = 20,
+      diameter = dialRadius * 2,
+      duration = transitionSupported ? 350 : 1;
+
+  // Popover template
+  var tpl = ['<div class="clockpicker picker">', '<div class="picker__holder">', '<div class="picker__frame">', '<div class="picker__wrap">', '<div class="picker__box">', '<div class="picker__date-display">', '<div class="clockpicker-display">', '<div class="clockpicker-display-column">', '<span class="clockpicker-span-hours text-primary"></span>', ':', '<span class="clockpicker-span-minutes"></span>', '</div>', '<div class="clockpicker-display-column clockpicker-display-am-pm">', '<div class="clockpicker-span-am-pm"></div>', '</div>', '</div>', '</div>', '<div class="picker__container__wrapper">', '<div class="picker__calendar-container">', '<div class="clockpicker-plate">', '<div class="clockpicker-canvas"></div>', '<div class="clockpicker-dial clockpicker-hours"></div>', '<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>', '</div>', '<div class="clockpicker-am-pm-block">', '</div>', '</div>', '<div class="picker__footer">', '</div>', '</div>', '</div>', '</div>', '</div>', '</div>', '</div>'].join('');
+
+  // ClockPicker
+  function ClockPicker(element, options) {
+    var popover = $(tpl),
+        plate = popover.find('.clockpicker-plate'),
+        holder = popover.find('.picker__holder'),
+        hoursView = popover.find('.clockpicker-hours'),
+        minutesView = popover.find('.clockpicker-minutes'),
+        amPmBlock = popover.find('.clockpicker-am-pm-block'),
+        isInput = element.prop('tagName') === 'INPUT',
+        input = isInput ? element : element.find('input'),
+        label = $("label[for=" + input.attr("id") + "]"),
+        self = this;
+
+    this.id = uniqueId('cp');
+    this.element = element;
+    this.holder = holder;
+    this.options = options;
+    this.isAppended = false;
+    this.isShown = false;
+    this.currentView = 'hours';
+    this.isInput = isInput;
+    this.input = input;
+    this.label = label;
+    this.popover = popover;
+    this.plate = plate;
+    this.hoursView = hoursView;
+    this.minutesView = minutesView;
+    this.amPmBlock = amPmBlock;
+    this.spanHours = popover.find('.clockpicker-span-hours');
+    this.spanMinutes = popover.find('.clockpicker-span-minutes');
+    this.spanAmPm = popover.find('.clockpicker-span-am-pm');
+    this.footer = popover.find('.picker__footer');
+    this.amOrPm = "PM";
+
+    // Setup for for 12 hour clock if option is selected
+    if (options.twelvehour) {
+      if (!options.ampmclickable) {
+        this.spanAmPm.empty();
+        $('<div id="click-am">AM</div>').appendTo(this.spanAmPm);
+        $('<div id="click-pm">PM</div>').appendTo(this.spanAmPm);
+      } else {
+        this.spanAmPm.empty();
+        $('<div id="click-am">AM</div>').on("click", function () {
+          self.spanAmPm.children('#click-am').addClass("text-primary");
+          self.spanAmPm.children('#click-pm').removeClass("text-primary");
+          self.amOrPm = "AM";
+        }).appendTo(this.spanAmPm);
+        $('<div id="click-pm">PM</div>').on("click", function () {
+          self.spanAmPm.children('#click-pm').addClass("text-primary");
+          self.spanAmPm.children('#click-am').removeClass("text-primary");
+          self.amOrPm = 'PM';
+        }).appendTo(this.spanAmPm);
+>>>>>>> hotfix/accessibility
       }
 
       /**
@@ -11608,6 +11946,7 @@ $jscomp.polyfill = function (e, r, p, m) {
   var FormSelect = function (_Component20) {
     _inherits(FormSelect, _Component20);
 
+<<<<<<< HEAD
     /**
      * Construct FormSelect instance
      * @constructor
@@ -11622,6 +11961,88 @@ $jscomp.polyfill = function (e, r, p, m) {
 
       if (_this68.$el.hasClass('browser-default')) {
         return _possibleConstructorReturn(_this68);
+=======
+  // Show popover
+  ClockPicker.prototype.show = function (e) {
+    // Not show again
+    if (this.isShown) {
+      return;
+    }
+    raiseCallback(this.options.beforeShow);
+    $(':input').each(function () {
+      $(this).attr('tabindex', -1);
+    });
+    var self = this;
+    // Initialize
+    this.input.blur();
+    this.popover.addClass('picker--opened');
+    this.input.addClass('picker__input picker__input--active');
+    $(document.body).css('overflow', 'hidden');
+    // Get the time
+    var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
+    if (this.options.twelvehour && !(typeof value[1] === 'undefined')) {
+      if (value[1].indexOf("AM") > 0) {
+        this.amOrPm = 'AM';
+      } else {
+        this.amOrPm = 'PM';
+      }
+      value[1] = value[1].replace("AM", "").replace("PM", "");
+    }
+    if (value[0] === 'now') {
+      var now = new Date(+new Date() + this.options.fromnow);
+      value = [now.getHours(), now.getMinutes()];
+      if (this.options.twelvehour) {
+        this.amOrPm = value[0] >= 12 && value[0] < 24 ? 'PM' : 'AM';
+      }
+    }
+    this.hours = +value[0] || 0;
+    this.minutes = +value[1] || 0;
+    this.spanHours.html(this.hours);
+    this.spanMinutes.html(leadingZero(this.minutes));
+    if (!this.isAppended) {
+
+      // Append popover to input by default
+      var containerEl = document.querySelector(this.options.container);
+      if (this.options.container && containerEl) {
+        containerEl.appendChild(this.popover[0]);
+      } else {
+        this.popover.insertAfter(this.input);
+      }
+
+      if (this.options.twelvehour) {
+        if (this.amOrPm === 'PM') {
+          this.spanAmPm.children('#click-pm').addClass("text-primary");
+          this.spanAmPm.children('#click-am').removeClass("text-primary");
+        } else {
+          this.spanAmPm.children('#click-am').addClass("text-primary");
+          this.spanAmPm.children('#click-pm').removeClass("text-primary");
+        }
+      }
+      // Reset position when resize
+      $win.on('resize.clockpicker' + this.id, function () {
+        if (self.isShown) {
+          self.locate();
+        }
+      });
+      this.isAppended = true;
+    }
+    // Toggle to hours view
+    this.toggleView('hours');
+    // Set position
+    this.locate();
+    this.isShown = true;
+    // Hide when clicking or tabbing on any element except the clock and input
+    $doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function (e) {
+      var target = $(e.target);
+      if (target.closest(self.popover.find('.picker__wrap')).length === 0 && target.closest(self.input).length === 0) {
+        self.hide();
+      }
+    });
+    // Hide when ESC is pressed
+    $doc.on('keyup.clockpicker.' + this.id, function (e) {
+      if (e.keyCode === 27) {
+        self.hide();
+>>>>>>> hotfix/accessibility
       }
 
       _this68.el.M_FormSelect = _this68;
@@ -11818,6 +12239,14 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (this.el.disabled) {
           $(this.input).prop('disabled', 'true');
         }
+<<<<<<< HEAD
+=======
+      }
+    });
+  };
+})(jQuery);
+;(function ($) {
+>>>>>>> hotfix/accessibility
 
         this.$el.before(this.input);
         this._setValueToInput();

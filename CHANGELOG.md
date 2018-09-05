@@ -250,7 +250,8 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Allow select native browser validation error messages
 - Added fix for validation messages being mispositioned when input is empty
 
-## v0.100.0 (July 19th)
+
+## v0.100.0 (July 19, 2017)
 - :sparkles: **Rewrote Modal Plugin** :sparkles:
   - Modal open no longer initializes plugin
   - Fixed bug where modal open did not use initialized options
@@ -275,7 +276,8 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Added close on select option for date picker
 - Browser errors now show up on radio buttons and checkboxes
 
-## v0.99.0 (June 22th)
+
+## v0.99.0 (June 22, 2017)
 - Added support for jQuery 3
 - Fixed dynamic textarea resize bug
 - Added support for custom active elements in scrollspy
@@ -284,7 +286,8 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Added callbacks to side nav
 - Updated styling for switches
 
-## v0.98.2 (April 14th)
+
+## v0.98.2 (April 14, 2017)
 - :no_good: **Autocomplete: renamed and moved options to `autocompleteOptions`** :no_good:
 - Fixed collapsible preselect bug
 - Fixed dropdown event bubbling bug
@@ -294,7 +297,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Fixed grid offset bug
 
 
-## v0.98.1 (March 21st)
+## v0.98.1 (March 21, 2017)
 - Fixed various select bugs on mobile devices
 - Fixed small sidenav overlay bugs
 - Fixed carousel resizing bug
@@ -305,7 +308,7 @@ Bolded styling surrounded by emojis indicates a breaking change.
 - Added Feature Discovery component
 
 
-## v0.98.0 (January 25th)
+## v0.98.0 (January 25, 2017)
 - :no_good: **Standardized plugin option naming to camelcase (please check your plugin calls to make sure all the options are camelcase)** :no_good:
 - Added FABs in image cards
 - Added swipeable tabs

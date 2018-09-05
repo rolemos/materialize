@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
   let concatFile = 'temp/js/materialize_concat.js.map';
 
+  var concatFile = 'temp/js/materialize_concat.js.map';
+
   // configure the tasks
   let config = {
     //  Jasmine
@@ -654,6 +656,10 @@ module.exports = function(grunt) {
   ]);
 
   grunt.task.registerTask('configureBabel', 'configures babel options', function() {
+    config.babel.bin.options.inputSourceMap = grunt.file.readJSON(concatFile);
+  });
+
+  grunt.task.registerTask("configureBabel", "configures babel options", function() {
     config.babel.bin.options.inputSourceMap = grunt.file.readJSON(concatFile);
   });
 
