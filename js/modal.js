@@ -335,13 +335,8 @@
       }
 
       this.isOpen = false;
-<<<<<<< HEAD
       Modal._modalsOpen--;
       this._nthModalOpened = 0;
-=======
-      this.$el[0].classList.remove('open');
-      document.body.style.overflow = '';
->>>>>>> hotfix/accessibility
 
       // Call onCloseStart callback
       if (typeof this.options.onCloseStart === 'function') {
@@ -379,36 +374,7 @@
    */
   Modal._count = 0;
 
-<<<<<<< HEAD
   M.Modal = Modal;
-=======
-  Materialize.Modal = Modal;
-
-  $.fn.modal = function(methodOrOptions) {
-    // Call plugin method if valid method name is passed in
-    if (Modal.prototype[methodOrOptions]) {
-      // Getter methods
-      if (methodOrOptions.slice(0,3) === 'get') {
-        return this.first()[0].M_Modal[methodOrOptions]();
-
-      // Void methods
-      } else {
-        return this.each(function() {
-          this.M_Modal[methodOrOptions]();
-        });
-      }
-
-    // Initialize plugin if options or no argument is passed in
-    } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
-      Modal.init(this, arguments[0]);
-      return this;
-
-    // Return error if an unrecognized  method name is passed in
-    } else {
-      $.error(`Method ${methodOrOptions} does not exist on jQuery.modal`);
-    }
-  };
->>>>>>> hotfix/accessibility
 
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Modal, 'modal', 'M_Modal');
