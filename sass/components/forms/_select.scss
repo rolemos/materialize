@@ -13,23 +13,6 @@ select {
   height: $input-height;
 }
 
-<<<<<<< HEAD
-=======
-
-.input-field {
-  & > select {
-    display: block;
-    position: absolute;
-    width: 0;
-    pointer-events: none;
-    height: 0;
-    top: 0;
-    left: 0;
-    opacity: 0;
-  }
-}
-
->>>>>>> hotfix/accessibility
 .select-label {
   position: absolute;
 }

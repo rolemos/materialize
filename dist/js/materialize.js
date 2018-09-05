@@ -1,4 +1,14 @@
 /*!
+ * Materialize v1.0.0-rc.4 (http://materializecss.com)
+ * Copyright 2014-2017 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
+/*!
+ * Materialize vundefined (http://materializecss.com)
+ * Copyright 2014-2017 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ */
+/*!
 <<<<<<< HEAD
  * Materialize v1.0.0-rc.2 (http://materializecss.com)
 =======

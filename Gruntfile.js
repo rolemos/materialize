@@ -1,7 +1,7 @@
+"use strict";
+
 module.exports = function(grunt) {
   let concatFile = 'temp/js/materialize_concat.js.map';
-
-  var concatFile = 'temp/js/materialize_concat.js.map';
 
   // configure the tasks
   let config = {
