@@ -2,7 +2,7 @@ Changelog
 =======
 Bolded styling surrounded by emojis indicates a breaking change.
 
-## 1.0.0-rc.4 (June 23rd, 2018)
+## 1.0.0-rc.5 (September 6th, 2018)
 - Include unit of measure for number #6018
 
 ## 1.0.0-rc.2 (June 23rd, 2018)
